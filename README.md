@@ -1,2 +1,2 @@
 # Ik-WC
-woocommerce customizations
+woocommerce a new file upload field added to product details page and is stored in database
