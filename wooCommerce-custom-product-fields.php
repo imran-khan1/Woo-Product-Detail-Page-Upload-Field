@@ -16,6 +16,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
+ * Check if WooCommerce is active.
+ */
+add_action( 'plugins_loaded', 'wc_custom_search_check_woocommerce' );
+
+function wc_custom_search_check_woocommerce() {
+
+	if ( ! class_exists( 'WooCommerce' ) ) {
+
+		add_action( 'admin_notices', function() {
+			?>
+			<div class="notice notice-error">
+				<p>
+					<strong>WC Custom Search:</strong>
+					WooCommerce must be installed and activated for this plugin to work.
+				</p>
+			</div>
+			<?php
+		} );
+
+		return;
+	}
+}
+
+
+/**
  * ---------------------------------------------------------
  * 1. Display Custom Fields on Product Page
  * ---------------------------------------------------------
